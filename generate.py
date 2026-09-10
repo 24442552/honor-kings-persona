@@ -19,7 +19,7 @@ QUESTIONS = [
     {
         "id": "q1",
         "title": "开黑麦突然没人说话。安静得像对面已经推完水晶。",
-        "prompt": "有人当广播台，有人从来不回。你呢。",
+        "prompt": "有人当广播台，有人已读不回。你呢。",
         "backing": {
             "name": "外向性 Extraversion · IPIP Big Five Markers（Goldberg）",
             "text": "大五里的外向性，看社交能量从哪来。受不了冷场的人会去填麦；觉得说话有成本的人会不回、会静音。开黑一静，比问卷诚实。",
@@ -27,14 +27,14 @@ QUESTIONS = [
         "options": [
             {"label": "我来播报。兵线、草丛、谁在送，一条龙服务，你们听着就行", "vec": {"e": 18, "flash": 8, "pride": 6, "mid": 4}},
             {"label": "丢一句「你们是去集体排队了吗」，然后自己先笑", "vec": {"e": 6, "o": 8, "cute": 6, "chaos": 5}},
-            {"label": "不回。打字太烦，沟通也有成本，他们说他们的", "vec": {"e": -12, "solo": 10, "c": 6, "late": 4}},
-            {"label": "谁话多就静音。自娱自乐，不想在游戏里浪费注意力", "vec": {"e": -8, "solo": 12, "dark": 6, "n": -4, "support": 4}},
+            {"label": "不回。手在打游戏，不在打字。麦是背景音", "vec": {"e": -12, "solo": 10, "c": 6, "late": 4}},
+            {"label": "谁话多就静音。我来打游戏的，不是来开会的", "vec": {"e": -8, "solo": 12, "dark": 6, "n": -4, "support": 4}},
         ],
     },
     {
         "id": "q2",
         "title": "该你的那份被吃了。公屏跳出一个问号。",
-        "prompt": "兵、河蟹、红buff都算。辅助也会被抢。没这事的人，可以直说。",
+        "prompt": "兵、河蟹、红都算。辅助被抢了也算。",
         "backing": {
             "name": "宜人性 Agreeableness · IPIP / 合作—竞争倾向",
             "text": "宜人性高的人先圆场；低的人先计较公平。被占便宜那一下，比「你乐不乐意当好人」更准。从不计较的人，也是一种答案。",
@@ -42,7 +42,7 @@ QUESTIONS = [
         "options": [
             {"label": "回没事。真的没事。抢就抢，问号当表情包", "vec": {"a": 16, "roam": 8, "support": 8, "carry": -6}},
             {"label": "精确到秒：那份姓我。问号请原路退回", "vec": {"a": -6, "c": 12, "control": 8, "mid": 6}},
-            {"label": "这种计较我从来不做。我没兵线，跟着混就好", "vec": {"a": 12, "support": 12, "roam": 10, "e": -6, "solo": 4}},
+            {"label": "我辅助。我没兵。问号请去找有兵的人", "vec": {"a": 12, "support": 12, "roam": 10, "e": -6, "solo": 4}},
             {"label": "吃我的，我就吃你的。我的你的不分家。从这一秒起他是野怪，野怪是可以打的", "vec": {"a": -12, "dark": 10, "jg": 8, "assassin": 8}},
         ],
     },
@@ -56,7 +56,7 @@ QUESTIONS = [
         },
         "options": [
             {"label": "秒锁本命。不熟的英雄没有户口", "vec": {"c": 14, "pride": 6, "late": -4, "solo": 4}},
-            {"label": "看缺什么补什么。跟着混就好，我不挑英雄", "vec": {"a": 10, "c": 8, "roam": 8, "support": 8, "carry": -4}},
+            {"label": "缺啥补啥。我可以是人，也可以是胶水", "vec": {"a": 10, "c": 8, "roam": 8, "support": 8, "carry": -4}},
             {"label": "转吧。天意比我懂版本，我只负责挨骂", "vec": {"o": 14, "chaos": 10, "c": -8, "flash": 6}},
             {"label": "锁一个对面最怕、队友最会在麦里尖叫的", "vec": {"e": 6, "dark": 8, "flash": 8, "jg": 6}},
         ],
@@ -64,16 +64,16 @@ QUESTIONS = [
     {
         "id": "q4",
         "title": "这把已经送了两次。草又在晃。",
-        "prompt": "崩了之后你的手还在不在。送的人是你，或不是你，都算。",
+        "prompt": "崩了之后手还在不在。",
         "backing": {
             "name": "神经质 Neuroticism / 情绪稳定性 · BFI-10（Rammstedt & John, 2007）",
             "text": "有人被抓两次就宣判这把死刑；有人缩塔当无事发生。第三次草晃，是情绪音量旋钮。",
         },
         "options": [
             {"label": "再送一个。战绩要完整，残缺的 0/2 不吉利", "vec": {"n": 12, "chaos": 10, "pride": -4, "cute": 4}},
-            {"label": "缩着打。该怎么发育还怎么发育，不表演", "vec": {"n": -8, "c": 10, "late": 8, "control": 6}},
+            {"label": "缩塔。我在参悟兵法，不是害怕", "vec": {"n": -8, "c": 10, "late": 8, "control": 6}},
             {"label": "反蹲。你再来一次，这次我请你喝红", "vec": {"n": 4, "skill": 8, "jg": 8, "assassin": 6, "dark": 4}},
-            {"label": "这个剧本我认不进。我不怎么送，跟着混就好", "vec": {"n": -6, "a": 8, "support": 8, "roam": 6, "e": -4}},
+            {"label": "送的不是我。草爱晃就晃，我在旁边喝水", "vec": {"n": -6, "a": 8, "support": 8, "roam": 6, "e": -4}},
         ],
     },
     {
@@ -87,7 +87,7 @@ QUESTIONS = [
         "options": [
             {"label": "走。不踩一下，怎么知道是不是幻觉", "vec": {"o": 16, "jg": 6, "flash": 6, "skill": 4}},
             {"label": "先问掉不掉星。玄学不能当饭吃", "vec": {"c": 10, "control": 10, "o": 2, "late": 4}},
-            {"label": "不去。少整这些，塔下跟着打就行", "vec": {"a": 6, "n": 4, "roam": 6, "support": 6, "solo": 4}},
+            {"label": "不去。野路是玄学，塔是户口。我户口还在", "vec": {"a": 6, "n": 4, "roam": 6, "support": 6, "solo": 4}},
             {"label": "能抓人我就信教。不能抓人，那叫抽象", "vec": {"o": 4, "dark": 8, "jg": 8, "assassin": 8, "carry": 4}},
         ],
     },
@@ -132,7 +132,7 @@ QUESTIONS = [
         "options": [
             {"label": "开。龙不拿，这把白打，皮肤会痒", "vec": {"c": 8, "carry": 8, "pride": 6, "jg": 6, "late": -4}},
             {"label": "先看眼。看不见就开，那叫给龙送人头", "vec": {"o": 6, "control": 12, "c": 6, "skill": 6, "mid": 4}},
-            {"label": "你们定。我跟着打，这种拍板我从来不做", "vec": {"a": 12, "roam": 8, "support": 8, "e": -4}},
+            {"label": "你们定。我跟刀。开会的事不找我，找龙", "vec": {"a": 12, "roam": 8, "support": 8, "e": -4}},
             {"label": "放。回家路上收过路费，龙是你爹我不管", "vec": {"dark": 12, "assassin": 8, "jg": 8, "a": -8, "chaos": 6}},
         ],
     },
@@ -163,7 +163,7 @@ QUESTIONS = [
             {"label": "现在打。活着的高光才叫高光，死后剪辑没有灵魂", "vec": {"late": -12, "flash": 10, "e": 6, "jg": 6, "chaos": 6}},
             {"label": "苟。我可以很无聊，很有钱，很十五分钟", "vec": {"late": 16, "c": 10, "marksman": 8, "bot": 8, "carry": 6}},
             {"label": "我不拿也行，但不能让对面拿得像过年", "vec": {"dark": 8, "control": 8, "assassin": 6, "top": 4, "a": -4}},
-            {"label": "给需要的人。我负责活着，什么时候打不是我拍板", "vec": {"a": 12, "support": 10, "roam": 8, "carry": -6, "late": 4}},
+            {"label": "给会用的人。我负责别死，闹钟不归我", "vec": {"a": 12, "support": 10, "roam": 8, "carry": -6, "late": 4}},
         ],
     },
     {
@@ -178,13 +178,13 @@ QUESTIONS = [
             {"label": "那必须。我本来就有点东西，峡谷网速慢，你们才看见", "vec": {"pride": 16, "e": 8, "flash": 8, "carry": 6}},
             {"label": "回「没有没有」，同时截图，进相册，设为私密", "vec": {"pride": -6, "n": 8, "a": 6, "cute": 6}},
             {"label": "哪一点。走位、伤害，还是我这张脸", "vec": {"c": 8, "o": 8, "skill": 8, "mid": 4}},
-            {"label": "不回。夸也要打字，心里知道就行", "vec": {"e": -8, "solo": 8, "a": 4, "pride": -4}},
+            {"label": "已读。夸我可以，别等回，我在发育", "vec": {"e": -8, "solo": 8, "a": 4, "pride": -4}},
         ],
     },
     {
         "id": "q12",
         "title": "和固定队友开黑，你们的绑定更像哪一种。",
-        "prompt": "问的是你们怎么黏。没有固定队友的，也可以直说。英雄名只是比喻。",
+        "prompt": "问怎么黏。一个人排也算：不黏。",
         "backing": {
             "name": "成人依恋风格（Bowlby / Ainsworth / Bartholomew）",
             "text": "黏着要确认的像瑶挂件；用距离保护自己的像隐身；关键时刻一定在的像传送；要一次说清楚的像点名。用开黑绑定问，比问恋爱史少尴尬。",
@@ -193,7 +193,7 @@ QUESTIONS = [
             {"label": "挂件绑定（像瑶）：我上车，你输出，一份血条谈一场恋爱", "vec": {"a": 10, "n": 8, "roam": 10, "support": 10, "cute": 8, "solo": -8}},
             {"label": "神隐绑定（像兰陵）：需要我的时候我在，不需要就当我死了", "vec": {"solo": 12, "dark": 8, "assassin": 8, "jg": 6, "a": -4, "e": -6}},
             {"label": "传送绑定（像大乔）：平时各打各的，团战我会把家搬过来", "vec": {"c": 8, "control": 8, "roam": 6, "support": 6, "mid": 4}},
-            {"label": "我不黏。路人局自己玩，很少固定开黑", "vec": {"solo": 14, "e": -8, "a": -2, "late": 4, "support": 4}},
+            {"label": "不黏。排位是单机游戏，队友是随机掉落", "vec": {"solo": 14, "e": -8, "a": -2, "late": 4, "support": 4}},
         ],
     },
     {
@@ -223,7 +223,7 @@ QUESTIONS = [
             {"label": "接梗。失败也要失败得好看，这叫审美", "vec": {"o": 12, "flash": 10, "cute": 6, "chaos": 6}},
             {"label": "叫停。先说人话，人话是暴击，梗是掉帧", "vec": {"c": 8, "a": -2, "control": 8, "n": 4}},
             {"label": "一起疯。不会接梗的人，这把没有峡谷户口", "vec": {"e": 10, "pride": 6, "mid": 4, "flash": 6}},
-            {"label": "静音。梗也好锅也好，这种沟通我从来不参与", "vec": {"e": -10, "solo": 10, "dark": 6, "support": 4}},
+            {"label": "静音。他们演小品，我打游戏", "vec": {"e": -10, "solo": 10, "dark": 6, "support": 4}},
         ],
     },
     {
@@ -237,14 +237,14 @@ QUESTIONS = [
         "options": [
             {"label": "立刻化身喷子。从他这波支援喷到出装，喷到他泉水户口，喷到他麦里只剩蒸汽", "vec": {"e": 8, "pride": 10, "warrior": 8, "top": 8, "a": -6}},
             {"label": "「谢谢你用生命给对面送经济，峡谷慈善家。」然后继续打", "vec": {"e": 12, "cute": 8, "chaos": 8, "flash": 6, "a": 4}},
-            {"label": "不回。静音，继续打。喷也是沟通成本", "vec": {"n": -8, "c": 8, "solo": 8, "e": -6, "a": 4}},
+            {"label": "静音。喷火龙你喷，我去打龙", "vec": {"n": -8, "c": 8, "solo": 8, "e": -6, "a": 4}},
             {"label": "甩战绩。数字比嘴诚实，面板比人机更像人", "vec": {"c": 10, "pride": 6, "skill": 6, "mid": 4, "carry": 4}},
         ],
     },
     {
         "id": "q16",
         "title": "钱只够做一件事：给你自己，或给那个最脆、最会送的队友。",
-        "prompt": "ATM 还是终点。没经济权的人，也可以直说。",
+        "prompt": "ATM 还是终点。手怎么动，人就怎么活。",
         "backing": {
             "name": "社会价值取向 SVO（Van Lange）+ SDT关系需求",
             "text": "资源给人、留给自己、按效率分、还是谁抢我偏不给谁。辅助吃前者，射手吃后者。",
@@ -253,7 +253,7 @@ QUESTIONS = [
             {"label": "给他。他活着我才安全，我是行走的情绪 ATM", "vec": {"a": 14, "support": 12, "roam": 10, "carry": -8, "tank": 4}},
             {"label": "给我。能把水晶点掉的是我，别谈奉献", "vec": {"carry": 14, "pride": 8, "marksman": 8, "assassin": 6, "bot": 6, "a": -6}},
             {"label": "谁会用给谁。资源喂猪，猪不会推塔", "vec": {"c": 10, "control": 10, "mid": 6, "o": 4}},
-            {"label": "轮不到我。我没这份经济权，跟着混就好", "vec": {"support": 10, "roam": 8, "a": 8, "e": -4, "carry": -6}},
+            {"label": "什么钱。我辅助，钱包在C位那", "vec": {"support": 10, "roam": 8, "a": 8, "e": -4, "carry": -6}},
         ],
     },
     {
@@ -268,7 +268,7 @@ QUESTIONS = [
             {"label": "花活。要让回放都觉得该给我单独做一期", "vec": {"flash": 16, "skill": 10, "assassin": 8, "e": 6, "jg": 4}},
             {"label": "成型。我慢，我有钱，我会把对面射到怀疑手机", "vec": {"late": 14, "c": 8, "marksman": 8, "bot": 8, "n": -4}},
             {"label": "点名。伤害出现在该出现的人身上，像手术，像报复", "vec": {"skill": 12, "control": 10, "mage": 6, "assassin": 4, "mid": 4}},
-            {"label": "不要高光。跟着混，赢了就行，镜头这种事我从来不抢", "vec": {"flash": -8, "a": 10, "support": 10, "roam": 8, "e": -4}},
+            {"label": "不要镜头。赢了就行，集锦里没有我是一种修养", "vec": {"flash": -8, "a": 10, "support": 10, "roam": 8, "e": -4}},
         ],
     },
     {
@@ -282,7 +282,7 @@ QUESTIONS = [
         "options": [
             {"label": "挡枪的。谁要死了我先冲，输出请站我后面", "vec": {"tank": 10, "support": 8, "a": 10, "top": 6, "roam": 6}},
             {"label": "偷人的。对面C一掉血我就在，打完人我就没了，别找我复盘", "vec": {"assassin": 10, "dark": 10, "skill": 8, "jg": 8, "solo": 6}},
-            {"label": "跟着混的。选个辅助，谁也不理，孤独的工具人", "vec": {"support": 12, "a": 8, "e": -8, "roam": 8, "solo": 6, "cute": 4}},
+            {"label": "工具人。选个辅助，谁也不理，跟着混，peace and love", "vec": {"support": 12, "a": 8, "e": -8, "roam": 8, "solo": 6, "cute": 4}},
             {"label": "拍板的。开不开团我说了算，你们跟就行", "vec": {"control": 12, "pride": 8, "carry": 8, "c": 6, "jg": 6, "mid": 4}},
         ],
     },
@@ -1293,13 +1293,16 @@ def specials() -> dict[str, dict[str, str]]:
             "praise": "拍在人群里的时候，行政很有效。",
         },
         "张良": {
-            "persona": "言灵之书。你点名，你禁言，你觉得语言能停止一个人。",
-            "good": "点控、中辅、处决感。",
-            "bad": "禁言用在已经死的人身上。",
-            "official": "官方：言灵之书。",
-            "outside": "「张良点我」是恐惧。功能评价高于颜值讨论。",
-            "roast": "言灵之书，言的是你点空了。",
-            "praise": "能让一个人停止的人，团战会听话。",
+            "vibe": "你话少。少到像一句禁言。",
+            "persona": "别人靠麦沟通，你靠点名沟通。一张嘴，一个人从这局里消失。朋友觉得你冷，对面上过你大招的人知道：你不是冷，你是在选人。开黑你可以不回，团战你回的是「你，停」。语言对你来说不是聊天，是技能。不认识张良也没关系——他就是那个能让一个人突然说不出话的人。",
+            "good": "决断、点控、能把混乱按暂停。一句够用，两句都嫌多。",
+            "bad": "话少被当成不管；点错人就像点错人生。禁言有时用在已经死的人身上。",
+            "official": "官方：言灵之书。点谁，谁停。中路或游走的法术控制。",
+            "outside": "不玩的人只记得「张良点我」。玩的人知道：你不是辅助，你是移动的句号。",
+            "roast": "言灵之书，言的是你点空了。小黑屋开了门，里面没人。",
+            "praise": "团战真正听话的时候，是因为有人被你禁言了。这是一种很干净的暴力。",
+            "nick_bad": "点空也吓人",
+            "nick_good": "一言停手",
         },
         "姜子牙": {
             "persona": "封神者。你站得远，法打得晚，你相信时间站在神这边。",
@@ -1644,6 +1647,7 @@ def apply_nudge(v: dict[str, float], name: str, spec: dict) -> None:
         "花木兰": {"skill": 14, "o": 8, "top": 8, "flash": 8},
         "司马懿": {"late": 12, "dark": 12, "jg": 8, "c": 8},
         "西施": {"control": 14, "mid": 8, "cute": 8, "skill": 8},
+        "张良": {"control": 18, "mid": 10, "dark": 10, "e": -8, "mage": 8, "solo": 8, "skill": 8},
         "明世隐": {"dark": 10, "support": 8, "roam": 8, "carry": 4},
         "鲁班大师": {"control": 14, "o": 8, "roam": 10, "c": 8},
         "澜": {"jg": 10, "assassin": 8, "dark": 8, "skill": 8},
@@ -1713,6 +1717,7 @@ NICKS = {
     "元歌": ("自己玩迷", "一人分饰两角"),
     "司马懿": ("发育忘参团", "隐忍暴政"),
     "西施": ("拉错人", "点名暴政"),
+    "张良": ("点空也吓人", "一言停手"),
     "干将莫邪": ("剑淬墙壁", "预判艺术家"),
     "安琪拉": ("白天送", "火球警告"),
     "小乔": ("转圈圈", "甜美暴政"),
@@ -1763,6 +1768,9 @@ def finish_spec(name: str, title: str, role: str, lanes: list[str], spec: dict[s
     nick_good = spec.get("nick_good") or (pair[1] if pair else None) or ROLE_NICK_GOOD.get(role, title)
     out = dict(spec)
     out["epithet"] = f"{nick_bad}的{nick_good}的{name}"
+    if not out.get("vibe"):
+        first = (out.get("persona") or "").split("。")[0]
+        out["vibe"] = (first + "。") if first else f"你像{name}。"
     return out
 
 
@@ -1770,6 +1778,7 @@ def template_spec(name: str, title: str, role: str, lanes: list[str]) -> dict[st
     lane = lanes[0]
     return {
         "persona": f"你像{name}。官方叫你「{title}」，你把{role}的职责过成性格：在{lane}这条地形上，你最像自己。",
+        "vibe": f"你把{role}活成一种脾气。",
         "good": ROLE_TRAIT[role]["good"],
         "bad": ROLE_TRAIT[role]["bad"],
         "official": f"官方称号「{title}」，职业{role}，常见分路：{' / '.join(lanes)}。",
@@ -1959,6 +1968,15 @@ HTML = r'''<!DOCTYPE html>
       align-items: center;
     }
     .hero-head .q-title { font-size: 22px; line-height: 1.3; word-break: break-word; }
+    .persona-lead { margin: 0 0 14px; }
+    .persona-lead .vibe {
+      font-family: "ZCOOL XiaoWei", serif;
+      font-size: 24px;
+      line-height: 1.4;
+      color: var(--gold);
+      margin: 0 0 10px;
+    }
+    .persona-lead p { margin: 0; }
     .trait { color: var(--muted); font-size: 13px; margin: 0 0 8px; }
     .trait b { color: var(--gold); font-weight: 700; }
     .hero-head img {
@@ -2092,7 +2110,7 @@ HTML = r'''<!DOCTYPE html>
       .row { margin-top: 8px; }
       .btn { padding: 10px 16px; min-height: 40px; }
       details.back { margin-top: 8px; padding-top: 8px; }
-      .cover-title { font-size: 28px; margin: 0 0 8px; }
+      .persona-lead .vibe { font-size: 20px; }
       .gets { margin-top: 16px; padding-top: 14px; }
       .gets li { font-size: 13px; }
       .hero-head { grid-template-columns: 72px 1fr; gap: 12px; }
@@ -2247,11 +2265,15 @@ HTML = r'''<!DOCTYPE html>
       const h = main.h;
       return `
         ${heroCard(main, "main")}
+        <article class="block persona-lead">
+          <h3>人设</h3>
+          <p class="vibe">${h.vibe}</p>
+          <p>${h.persona}</p>
+        </article>
         <div class="bars" aria-label="人格倾向">
           ${OCEAN.map(([k,name]) => `<div><div class="bar-label"><span>${name}</span><span class="mono">${Math.round(ocean[k])}</span></div>${pctBar(ocean[k])}</div>`).join("")}
         </div>
         <div class="grid2">
-          <article class="block"><h3>性格 · 局内人设</h3><p>${h.persona}</p></article>
           <article class="block"><h3>官方怎么定义</h3><p>${h.official}</p></article>
           <article class="block"><h3>好的一面</h3><p>${h.good}</p><p>${h.roleGood}</p><p>${h.laneGood}</p></article>
           <article class="block"><h3>不好的一面</h3><p>${h.bad}</p><p>${h.roleBad}</p><p>${h.laneBad}</p></article>
