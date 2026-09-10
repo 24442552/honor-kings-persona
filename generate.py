@@ -1862,11 +1862,19 @@ HTML = r'''<!DOCTYPE html>
     }
     h1, h2, .brand { font-family: "ZCOOL XiaoWei", serif; font-weight: 400; }
     .top {
-      display: flex; justify-content: space-between; gap: 16px; align-items: flex-end;
-      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 22px;
+    }
+    .brand-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
     }
     .brand { font-size: 28px; margin: 0; letter-spacing: .08em; color: var(--gold); }
-    .sub { color: var(--muted); font-size: 14px; margin: 8px 0 0; }
+    .sub { color: var(--muted); font-size: 14px; margin: 0; }
     .count { color: var(--cyan); font-size: 13px; white-space: nowrap; }
     .panel {
       background: linear-gradient(180deg, rgba(255,255,255,.03), transparent 40%), var(--card);
@@ -1997,7 +2005,35 @@ HTML = r'''<!DOCTYPE html>
       min-height: 76px;
     }
     .near img { width: 56px; height: 56px; object-fit: cover; border-radius: 10px; }
-    .foot { color: var(--muted); font-size: 12px; margin-top: 22px; }
+    .foot { color: var(--muted); font-size: 13px; margin-top: 14px; line-height: 1.55; }
+    .gets {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--line);
+    }
+    .gets h3 {
+      margin: 0 0 8px;
+      font-size: 13px;
+      letter-spacing: .12em;
+      color: var(--gold);
+    }
+    .gets ul { margin: 0; padding: 0; list-style: none; }
+    .gets li {
+      position: relative;
+      padding: 5px 0 5px 16px;
+      color: var(--text);
+      font-size: 14px;
+    }
+    .gets li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .75em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+    }
     .cover-title { font-size: 42px; line-height: 1.2; margin: 0 0 12px; color: var(--gold); }
     .mono { font-variant-numeric: tabular-nums; }
     @media (max-width: 739px) {
@@ -2009,21 +2045,28 @@ HTML = r'''<!DOCTYPE html>
         display: flex;
         flex-direction: column;
       }
-      .top {
-        margin-bottom: 10px;
-        align-items: center;
-        flex-shrink: 0;
-      }
-      .brand { font-size: 18px; letter-spacing: .06em; }
-      .sub { font-size: 13px; margin: 4px 0 0; }
+      .top { margin-bottom: 12px; }
+      .brand { font-size: 20px; letter-spacing: .06em; }
+      .sub { font-size: 13px; line-height: 1.45; }
       .count { font-size: 12px; }
-      .panel {
+      body.mode-q .panel {
         flex: 1;
         min-height: 0;
         padding: 14px 14px 12px;
         display: flex;
         flex-direction: column;
         overflow: hidden;
+      }
+      body.mode-cover .panel {
+        flex: 0 0 auto;
+        padding: 18px 16px 16px;
+        overflow: visible;
+      }
+      body.mode-result .panel {
+        flex: none;
+        overflow: visible;
+        display: block;
+        padding: 16px;
       }
       .q-layout { flex: 1; min-height: 0; }
       .progress { height: 6px; margin: 0 0 10px; }
@@ -2039,8 +2082,6 @@ HTML = r'''<!DOCTYPE html>
         -webkit-overflow-scrolling: touch;
       }
       .q-foot { margin-top: auto; }
-      #siteSub { display: none !important; }
-      body.mode-cover .panel { justify-content: center; }
       .opt {
         padding: 11px 12px;
         min-height: 44px;
@@ -2052,12 +2093,13 @@ HTML = r'''<!DOCTYPE html>
       .btn { padding: 10px 16px; min-height: 40px; }
       details.back { margin-top: 8px; padding-top: 8px; }
       .cover-title { font-size: 28px; margin: 0 0 8px; }
+      .gets { margin-top: 16px; padding-top: 14px; }
+      .gets li { font-size: 13px; }
       .hero-head { grid-template-columns: 72px 1fr; gap: 12px; }
       .hero-head img { width: 72px; height: 72px; border-radius: 12px; }
-      body.mode-cover, body.mode-q { overflow: hidden; }
-      body.mode-result { overflow: auto; }
+      body.mode-q { overflow: hidden; }
+      body.mode-cover, body.mode-result { overflow: auto; }
       body.mode-result .wrap { min-height: auto; display: block; }
-      body.mode-result .panel { overflow: visible; display: block; }
     }
     @media (prefers-reduced-motion: reduce) {
       .progress > span, .opt { transition: none; }
@@ -2067,11 +2109,11 @@ HTML = r'''<!DOCTYPE html>
 <body>
   <main class="wrap">
     <header class="top">
-      <div>
+      <div class="brand-line">
         <p class="brand">峡谷人格鉴识所</p>
-        <p class="sub" id="siteSub">答完出英雄。路人怎么夸你、怎么骂你，一并写上。</p>
+        <p class="count" id="heroCount"></p>
       </div>
-      <p class="count" id="heroCount"></p>
+      <p class="sub" id="siteSub">开黑现场 18 问。每题有专业依据，结论认真写人设。</p>
     </header>
     <section class="panel" id="app"></section>
   </main>
@@ -2134,10 +2176,19 @@ HTML = r'''<!DOCTYPE html>
     function renderCover() {
       return `
         <p class="kicker">18 问 · ${HEROES.length} 英雄</p>
-        <h2 class="cover-title">你是哪个英雄？</h2>
+        <h2 class="cover-title">你不是来被分类的。<br/>你是来被一个英雄认领的。</h2>
         <p class="q-prompt">按你在峡谷里会做的选。答完出人设，也出路人评价。</p>
         <div class="row">
-          <button class="btn" id="start">开始</button>
+          <button class="btn" id="start">开始鉴识</button>
+        </div>
+        <div class="gets">
+          <h3>答完你会拿到</h3>
+          <ul>
+            <li>一个最像你的英雄，外加两个接近的灵魂</li>
+            <li>人设、分路、职业，好的一面和不好的一面</li>
+            <li>官方怎么定义你，路人怎么夸、怎么骂</li>
+          </ul>
+          <p class="foot">每题可展开「本题在测什么」。有大五人格这类依据，当娱乐测试看就好。</p>
         </div>
       `;
     }
