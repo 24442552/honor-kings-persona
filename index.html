@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>峡谷人格鉴识所 · 你是哪个王者英雄</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,6 +25,7 @@
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; min-height: 100%; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
       font-family: "Noto Sans SC", sans-serif;
       color: var(--text);
@@ -38,8 +39,13 @@
       font: inherit;
       color: inherit;
       cursor: pointer;
+      touch-action: manipulation;
     }
-    .wrap { width: min(860px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 80px; }
+    .wrap {
+      width: min(860px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
     h1, h2, .brand { font-family: "ZCOOL XiaoWei", serif; font-weight: 400; }
     .top {
       display: flex; justify-content: space-between; gap: 16px; align-items: flex-end;
@@ -47,7 +53,7 @@
     }
     .brand { font-size: 28px; margin: 0; letter-spacing: .08em; color: var(--gold); }
     .sub { color: var(--muted); font-size: 14px; margin: 8px 0 0; }
-    .count { color: var(--cyan); font-size: 13px; }
+    .count { color: var(--cyan); font-size: 13px; white-space: nowrap; }
     .panel {
       background: linear-gradient(180deg, rgba(255,255,255,.03), transparent 40%), var(--card);
       border: 1px solid var(--line);
@@ -55,6 +61,8 @@
       box-shadow: var(--shadow);
       padding: 28px;
     }
+    .q-layout { display: flex; flex-direction: column; gap: 0; }
+    .q-head, .q-foot { flex-shrink: 0; }
     .progress {
       height: 8px; background: #0f141d; border-radius: 99px; overflow: hidden; margin: 0 0 22px;
     }
@@ -67,6 +75,7 @@
     .q-title { font-size: 26px; line-height: 1.35; margin: 8px 0 10px; }
     .q-prompt { color: var(--muted); margin: 0 0 20px; }
     .opts { display: grid; gap: 12px; }
+    .opts.locked { pointer-events: none; }
     .opt {
       text-align: left;
       background: #121826;
@@ -75,14 +84,24 @@
       padding: 16px 16px 16px 18px;
       min-height: 56px;
       transition: border-color .15s, transform .15s, background .15s;
+      -webkit-tap-highlight-color: transparent;
     }
-    .opt:hover, .opt:focus-visible {
+    .opt.picked {
       border-color: var(--gold);
       background: #1b2433;
-      outline: none;
+    }
+    .opt:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 2px;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .opt:hover {
+        border-color: var(--gold);
+        background: #1b2433;
+      }
     }
     .opt:active { transform: translateY(1px); }
-    .row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; align-items: center; }
     .btn {
       background: var(--gold);
       color: #1a1408;
@@ -98,16 +117,16 @@
       border: 1px solid var(--line);
     }
     details.back {
-      margin-top: 22px;
+      margin-top: 14px;
       border-top: 1px dashed var(--line);
-      padding-top: 14px;
+      padding-top: 10px;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
     }
     details.back summary {
       cursor: pointer;
       color: var(--cyan);
-      min-height: 44px;
+      min-height: 36px;
       display: flex;
       align-items: center;
     }
@@ -167,6 +186,65 @@
     .foot { color: var(--muted); font-size: 12px; margin-top: 22px; }
     .cover-title { font-size: 42px; line-height: 1.2; margin: 0 0 12px; color: var(--gold); }
     .mono { font-variant-numeric: tabular-nums; }
+    @media (max-width: 739px) {
+      .wrap {
+        width: 100%;
+        min-height: 100dvh;
+        min-height: 100svh;
+        padding: calc(10px + env(safe-area-inset-top)) 12px calc(10px + env(safe-area-inset-bottom));
+        display: flex;
+        flex-direction: column;
+      }
+      .top {
+        margin-bottom: 10px;
+        align-items: center;
+        flex-shrink: 0;
+      }
+      .brand { font-size: 18px; letter-spacing: .06em; }
+      .sub { font-size: 13px; margin: 4px 0 0; }
+      .count { font-size: 12px; }
+      .panel {
+        flex: 1;
+        min-height: 0;
+        padding: 14px 14px 12px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .q-layout { flex: 1; min-height: 0; }
+      .progress { height: 6px; margin: 0 0 10px; }
+      .kicker { font-size: 11px; letter-spacing: .12em; }
+      .q-title { font-size: 18px; line-height: 1.35; margin: 4px 0 6px; }
+      .q-prompt { font-size: 13px; line-height: 1.45; margin: 0 0 10px; }
+      .opts {
+        flex: 1;
+        min-height: 0;
+        gap: 8px;
+        overflow-y: auto;
+        align-content: start;
+        -webkit-overflow-scrolling: touch;
+      }
+      .q-foot { margin-top: auto; }
+      #siteSub { display: none !important; }
+      body.mode-cover .panel { justify-content: center; }
+      .opt {
+        padding: 11px 12px;
+        min-height: 44px;
+        font-size: 14px;
+        line-height: 1.4;
+        border-radius: 12px;
+      }
+      .row { margin-top: 8px; }
+      .btn { padding: 10px 16px; min-height: 40px; }
+      details.back { margin-top: 8px; padding-top: 8px; }
+      .cover-title { font-size: 28px; margin: 0 0 8px; }
+      .hero-head { grid-template-columns: 72px 1fr; gap: 12px; }
+      .hero-head img { width: 72px; height: 72px; border-radius: 12px; }
+      body.mode-cover, body.mode-q { overflow: hidden; }
+      body.mode-result { overflow: auto; }
+      body.mode-result .wrap { min-height: auto; display: block; }
+      body.mode-result .panel { overflow: visible; display: block; }
+    }
     @media (prefers-reduced-motion: reduce) {
       .progress > span, .opt { transition: none; }
     }
@@ -177,7 +255,7 @@
     <header class="top">
       <div>
         <p class="brand">峡谷人格鉴识所</p>
-        <p class="sub">题目像开黑内心 OS，结论认真写人设。答完会得到一个英雄，以及官方和路人同时怎么定义他。</p>
+        <p class="sub" id="siteSub">答完出英雄。路人怎么夸你、怎么骂你，一并写上。</p>
       </div>
       <p class="count" id="heroCount"></p>
     </header>
@@ -196,6 +274,7 @@
     ];
 
     const state = { i: 0, answers: [], view: "cover", result: null };
+    let locked = false;
 
     function emptyVec() {
       const v = {};
@@ -240,33 +319,37 @@
     }
     function renderCover() {
       return `
-        <p class="kicker">十八问 · 一英雄 · ${HEROES.length} 人池</p>
-        <h2 class="cover-title">你不是来被分类的。<br/>你是来被一个英雄认领的。</h2>
-        <p class="q-prompt">18 道题都是峡谷现场：问号、开龙、被喷、锁路。写法学的是现在网上那种抽象自嘲测试——场景具体，选项像你会在心里说的那句，不解释心理学。背书还在每题下面，这不是临床诊断。</p>
+        <p class="kicker">18 问 · ${HEROES.length} 英雄</p>
+        <h2 class="cover-title">你是哪个英雄？</h2>
+        <p class="q-prompt">按你在峡谷里会做的选。答完出人设，也出路人评价。</p>
         <div class="row">
-          <button class="btn" id="start">开始鉴识</button>
+          <button class="btn" id="start">开始</button>
         </div>
-        <p class="foot">每题可展开「本题背书」。结论会写人设、分路、职业、优缺点、官方定义与外界刻板印象。</p>
       `;
     }
     function renderQ() {
       const q = QUESTIONS[state.i];
       const pct = Math.round((state.i / QUESTIONS.length) * 100);
       return `
-        <div class="progress" aria-hidden="true"><span style="width:${pct}%"></span></div>
-        <p class="kicker">第 ${state.i+1} / ${QUESTIONS.length} 问</p>
-        <h2 class="q-title">${q.title}</h2>
-        <p class="q-prompt">${q.prompt}</p>
-        <div class="opts">
-          ${q.options.map((o, idx) => `<button class="opt" data-i="${idx}">${o.label}</button>`).join("")}
+        <div class="q-layout">
+          <div class="q-head">
+            <div class="progress" aria-hidden="true"><span style="width:${pct}%"></span></div>
+            <p class="kicker">第 ${state.i+1} / ${QUESTIONS.length} 问</p>
+            <h2 class="q-title">${q.title}</h2>
+            <p class="q-prompt">${q.prompt}</p>
+          </div>
+          <div class="opts">
+            ${q.options.map((o, idx) => `<button class="opt" data-i="${idx}">${o.label}</button>`).join("")}
+          </div>
+          <div class="q-foot">
+            ${state.i > 0 ? `<div class="row"><button class="btn ghost" id="back">上一问</button></div>` : ""}
+            <details class="back">
+              <summary>本题在测什么</summary>
+              <p><b>${q.backing.name}</b></p>
+              <p>${q.backing.text}</p>
+            </details>
+          </div>
         </div>
-        <div class="row">
-          ${state.i > 0 ? `<button class="btn ghost" id="back">上一问</button>` : ""}
-        </div>
-        <details class="back">
-          <summary>本题背书 · ${q.backing.name}</summary>
-          <p>${q.backing.text}</p>
-        </details>
       `;
     }
     function pctBar(n) {
@@ -328,29 +411,32 @@
         <div class="row">
           <button class="btn" id="retry">再测一次</button>
         </div>
-        <p class="foot">本测试把你的选项投影到大五、分路、职业与风格维度，再与 ${HEROES.length} 名正式服英雄做余弦相似度。它有专业框架背书，但不是心理测量学意义上的标准化量表。英雄人设综合官方称号/定位与玩家社区的夸奖与吐槽。</p>
+        <p class="foot">人设来自官方定位，也来自路人怎么夸、怎么骂。</p>
       `;
     }
     function paint() {
       const app = document.getElementById("app");
+      document.body.classList.remove("mode-cover", "mode-q", "mode-result");
+      document.body.classList.add("mode-" + state.view);
+      const siteSub = document.getElementById("siteSub");
+      if (siteSub) siteSub.hidden = state.view !== "cover";
       if (state.view === "cover") app.innerHTML = renderCover();
       if (state.view === "q") app.innerHTML = renderQ();
       if (state.view === "result") app.innerHTML = renderResult();
+      const active = document.activeElement;
+      if (active && app.contains(active) && typeof active.blur === "function") active.blur();
       app.querySelector("#start")?.addEventListener("click", () => { state.view = "q"; paint(); });
-      app.querySelector("#back")?.addEventListener("click", () => { state.i -= 1; state.answers.pop(); paint(); });
-      app.querySelector("#retry")?.addEventListener("click", () => { state.i = 0; state.answers = []; state.view = "cover"; state.result = null; paint(); });
+      app.querySelector("#back")?.addEventListener("click", () => {
+        if (locked) return;
+        state.i -= 1;
+        state.answers.pop();
+        paint();
+      });
+      app.querySelector("#retry")?.addEventListener("click", () => {
+        state.i = 0; state.answers = []; state.view = "cover"; state.result = null; paint();
+      });
       app.querySelectorAll(".opt").forEach(btn => {
-        btn.addEventListener("click", () => {
-          state.answers.push(Number(btn.dataset.i));
-          if (state.i === QUESTIONS.length - 1) {
-            state.result = score();
-            state.view = "result";
-          } else {
-            state.i += 1;
-          }
-          paint();
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        });
+        btn.addEventListener("click", () => pick(Number(btn.dataset.i), btn));
       });
       app.querySelectorAll("[data-swap]").forEach(btn => {
         btn.addEventListener("click", () => {
@@ -363,6 +449,26 @@
           window.scrollTo({ top: 0, behavior: "smooth" });
         });
       });
+    }
+    function pick(idx, btn) {
+      if (locked || state.view !== "q") return;
+      locked = true;
+      btn.blur();
+      btn.classList.add("picked");
+      btn.closest(".opts")?.classList.add("locked");
+      state.answers.push(idx);
+      const wait = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 220;
+      setTimeout(() => {
+        if (state.i === QUESTIONS.length - 1) {
+          state.result = score();
+          state.view = "result";
+        } else {
+          state.i += 1;
+        }
+        locked = false;
+        paint();
+        window.scrollTo(0, 0);
+      }, wait);
     }
     document.getElementById("heroCount").textContent = "图鉴 " + HEROES.length + " 人";
     paint();
